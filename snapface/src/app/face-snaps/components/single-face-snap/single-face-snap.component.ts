@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FaceSnap} from "../models/face-snap.model";
-import {FaceSnapsService} from "../services/face-snaps.services";
+import {FaceSnap} from "../../../core/models/face-snap.model";
+import {FaceSnapsService} from "../../../core/services/face-snaps.services";
 import {ActivatedRoute} from "@angular/router";
 import {Observable} from "rxjs";
+import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-single-face-snap',
@@ -22,13 +23,15 @@ export class SingleFaceSnapComponent implements OnInit {
     this.faceSnap$ = this.faceSnapsService.getFaceSnapById(faceSnapId);
   }
 
-  onSnap() {
-    // if (this.bDescription === 'Oh Snap!') {
-    //   this.faceSnapsService.snapFaceSnapById(this.faceSnap.id, 'snap');
-    //   this.bDescription = 'Oops, unSnap!';
-    // } else {
-    //   this.faceSnapsService.snapFaceSnapById(this.faceSnap.id, 'unsnap');
-    //   this.bDescription = 'Oh Snap!';
-    // }
+  onSnap(faceSnapId: number) {
+    if (this.bDescription === 'Oh Snap!') {
+      this.faceSnap$ = this.faceSnapsService.snapFaceSnapById(faceSnapId, 'snap').pipe(
+        tap(() => this.bDescription = 'Oops, unSnap!')
+      );
+    } else {
+      this.faceSnap$ = this.faceSnapsService.snapFaceSnapById(faceSnapId, 'unsnap').pipe(
+        tap(() => this.bDescription = 'Oh Snap!')
+      );
+    }
   }
 }
