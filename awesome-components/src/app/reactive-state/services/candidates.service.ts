@@ -1,12 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, delay, map, Observable, tap } from 'rxjs';
+import {
+  BehaviorSubject,
+  delay,
+  map,
+  Observable,
+  switchMap,
+  take,
+  tap,
+} from 'rxjs';
 import { Candidate } from '../models/candidate.model';
 import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class CandidatesService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   private _loading$ = new BehaviorSubject<boolean>(false);
   get loading$(): Observable<boolean> {
@@ -30,7 +39,7 @@ export class CandidatesService {
     }
     this.setLoadingStatus(true);
     this.http
-      .get<Candidate[]>(`${environment.apiUrl}/candidates`)
+      .get<Candidate[]>(`${ environment.apiUrl }/candidates`)
       .pipe(
         delay(1000),
         tap((candidates) => {
@@ -47,9 +56,48 @@ export class CandidatesService {
       this.getCandidatesFromServer();
     }
     return this.candidates$.pipe(
-      map(
-        (candidates) => candidates.filter((candidate) => candidate.id === id)[0]
+      map((candidates) => candidates
+        .filter((candidate) => candidate.id === id)[0]
       )
     );
+  }
+
+  refuseCandidate(id: number): void {
+    this.setLoadingStatus(true);
+    this.http
+      .delete(`${ environment.apiUrl }/candidates/${ id }`)
+      .pipe(
+        delay(1000),
+        switchMap(() => this.candidates$),
+        take(1),
+        map((candidates) =>
+          candidates.filter((candidate) => candidate.id !== id)
+        ),
+        tap((candidates) => {
+          this._candidates$.next(candidates);
+          this.setLoadingStatus(false);
+        })
+      )
+      .subscribe();
+  }
+
+  hireCandidate(id: number): void {
+    this.candidates$
+      .pipe(
+        take(1),
+        map((candidates) => candidates
+          .map((candidate) => candidate.id === id ?
+            { ...candidate, company: 'Snapface Ltd' } : candidate)
+        ),
+        tap((updatedCandidates) => this._candidates$.next(updatedCandidates)
+        ),
+        switchMap((updatedCandidates) =>
+          this.http.patch(
+            `${ environment.apiUrl }/candidates/${ id }`,
+            updatedCandidates.find((candidate) => candidate.id === id)
+          )
+        ),
+      )
+      .subscribe();
   }
 }
