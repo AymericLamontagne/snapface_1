@@ -1,0 +1,107 @@
+
+body {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #ececec;
+}
+
+.rt-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100% !important;
+  background-color: #ffffff;
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+}
+
+.mode-name span {
+  position: absolute;
+  left: 2%;
+  top: 100px;
+  font-size: 25px;
+  font-family: "Calibri";
+  font-weight: bold;
+  color: #505050;
+}
+
+.mat-grid-list {
+  left: 2%;
+  right: 2%;
+  top: 160px;
+  width: 96%;
+}
+
+.mat-grid-tile {
+  border-radius: 7px;
+  margin-top: 5px;
+  border: solid 2px #d0d0d0;
+}
+
+.card-asset {
+  position: relative;
+  height: 150px;
+  width: 200px;
+  left: 40px;
+  top: 220px;
+
+}
+
+.card-title {
+  position: absolute;
+  left: 30px;
+  top: 22px;
+  font-weight: bold;
+  font-size: 18px;
+  color: #505050;
+
+}
+
+.table-responsive {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  border-radius: 7px;
+  overflow: auto;
+  background-color: #FFFFFF;
+
+  .mat-table {
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+    overflow: auto;
+  }
+
+  .mat-row,
+  .mat-header-row {
+    display: table-row;
+  }
+
+  .mat-cell,
+  .mat-header-cell {
+    word-wrap: initial;
+    display: table-cell;
+    padding: 10px;
+    line-break: unset;
+    width: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
+  }
+}
+
+.table-paginator {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
+}

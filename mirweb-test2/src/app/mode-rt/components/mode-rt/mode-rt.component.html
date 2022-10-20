@@ -1,0 +1,61 @@
+<body>
+<mat-toolbar class="rt-header">
+  <span>MIR-RT</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="notification-button">
+    <mat-icon>notifications</mat-icon>
+  </button>
+  <button mat-icon-button class="information-icon">
+    <mat-icon>info</mat-icon>
+  </button>
+  <button mat-icon-button class="profile-icon">
+    <mat-icon>portrait</mat-icon>
+  </button>
+</mat-toolbar>
+<div class="mode-name">
+  <span>Mechanic Mode</span>
+</div>
+<mat-grid-list cols="12" rowHeight="65px" [gutterSize]="'20px'">
+  <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
+                 [style.background]="tile.color">
+    <div class="card-title">
+      {{tile.text}}
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="9" [rowspan]="6">
+    <div class="table-responsive">
+      <table mat-table [dataSource]="dataSource">
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> No.</th>
+          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+        <!-- Weight Column -->
+        <ng-container matColumnDef="weight">
+          <th mat-header-cell *matHeaderCellDef> Weight</th>
+          <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+        </ng-container>
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="symbol">
+          <th mat-header-cell *matHeaderCellDef> Symbol</th>
+          <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+    <div class="table-paginator">
+      <mat-paginator [pageSizeOptions]="[5, 20, 50, 100]"
+                     showFirstLastButtons aria-label="Select page of periodic elements">
+      </mat-paginator>
+    </div>
+  </mat-grid-tile>
+
+</mat-grid-list>
+</body>
+
