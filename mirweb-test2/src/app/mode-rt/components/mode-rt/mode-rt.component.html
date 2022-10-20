@@ -2,6 +2,8 @@
 <mat-toolbar class="rt-header">
   <span>MIR-RT</span>
   <span class="example-spacer"></span>
+  <span class="date-header">{{currentDate | date:'EEE. MMMM dd'}}</span>
+  <span class="time-header">{{currentDate | date:'H:mm'}}</span>
   <button mat-icon-button class="notification-button">
     <mat-icon>notifications</mat-icon>
   </button>
@@ -11,6 +13,7 @@
   <button mat-icon-button class="profile-icon">
     <mat-icon>portrait</mat-icon>
   </button>
+
 </mat-toolbar>
 <div class="mode-name">
   <span>Mechanic Mode</span>

@@ -16,10 +16,6 @@ export class LoginPageComponent implements OnInit {
   }
 
   onLogin(): void {
-    // Authentification check
-    console.log('this is ok')
-    // this.auth.login();
-    // Send user in Mir-RT
     this.router.navigateByUrl('/mode-rt');
   }
 }

@@ -53,6 +53,7 @@ export class ModeRtComponent implements AfterViewInit {
   ];
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  currentDate = new Date();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
