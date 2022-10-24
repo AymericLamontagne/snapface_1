@@ -1,0 +1,13 @@
+{
+  "MIRRT": {
+    "ASSET_TILE": "ASSET",
+    "REASON_TILE": "Reason (R)",
+    "COMP_TILE": "Component (C)",
+    "ASSET_INFO_TILE": "Asset Info",
+    "MODE_NAME": "Mecanic Mode",
+    "CODE": "Code",
+    "NAME": "Name",
+    "WEIGHT": "Weight",
+    "SYMBOL": "Symbol"
+  }
+}

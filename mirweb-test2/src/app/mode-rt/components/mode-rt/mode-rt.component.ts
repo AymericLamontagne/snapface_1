@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
+import { TraductorService } from "../../services/traductor.service";
+import { FormBuilder, FormControl } from "@angular/forms";
 
 export interface Tile {
   color: string;
@@ -36,29 +38,34 @@ const ELEMENT_DATA: PeriodicElement[] = [
   { position: 17, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
 ];
 
+
 @Component({
   selector: 'app-mode-rt',
   templateUrl: './mode-rt.component.html',
   styleUrls: ['./mode-rt.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class ModeRtComponent implements AfterViewInit {
-  tiles: Tile[] = [
-    { text: 'Asset', cols: 3, rows: 2, color: 'white' },
-    { text: 'Reason (R)', cols: 3, rows: 2, color: 'white' },
-    { text: 'Component (C)', cols: 3, rows: 2, color: 'white' },
-    { text: 'NONE', cols: 3, rows: 2, color: 'invisible' },
-    { text: 'Asset Info', cols: 3, rows: 6, color: 'white' },
-    //{ text: 'Parts', cols: 9, rows: 6, color: 'lightgreen' },
-  ];
+export class ModeRtComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   currentDate = new Date();
+  traductor!: TraductorService;
+  langCtrl!: FormControl;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  constructor(private traductorService: TraductorService, private formBuilder: FormBuilder) {
+  }
+
+  ngOnInit(): void {
+    this.traductor = this.traductorService;
+
+    this.langCtrl = this.formBuilder.control(this.traductorService.locales[0].value)
+  }
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+
   }
 
   columns = [
@@ -84,4 +91,13 @@ export class ModeRtComponent implements AfterViewInit {
     },
   ];
 
+  updateLocale() {
+    const newLang = this.langCtrl.value;
+    this.traductorService.updateLocale(newLang);
+  }
+
+  toggleTheme() {
+    document.documentElement.classList.add('dark');
+    localStorage.setItem('color-theme', 'dark');
+  }
 }

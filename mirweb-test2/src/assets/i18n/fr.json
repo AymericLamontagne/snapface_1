@@ -1,0 +1,13 @@
+{
+  "MIRRT": {
+    "ASSET_TILE": "Unité",
+    "REASON_TILE": "Raisons (R)",
+    "COMP_TILE": "Composantes (C)",
+    "ASSET_INFO_TILE": "Info sur l'unité",
+    "MODE_NAME": "Mode Mécanique",
+    "CODE": "Code",
+    "NAME": "Nom",
+    "WEIGHT": "Poids",
+    "SYMBOL": "Symbole"
+  }
+}

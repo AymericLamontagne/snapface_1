@@ -8,11 +8,11 @@ import { MaterialModule } from "../shared/material.module";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatTableModule } from "@angular/material/table";
 import { MatPaginatorModule } from "@angular/material/paginator";
-
+import { TranslocoModule } from "@ngneat/transloco";
 
 @NgModule({
   declarations: [
-    ModeRtComponent
+    ModeRtComponent,
   ],
   imports: [
     CommonModule,
@@ -21,7 +21,8 @@ import { MatPaginatorModule } from "@angular/material/paginator";
     MaterialModule,
     MatGridListModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    TranslocoModule,
   ]
 })
 export class ModeRtModule {
