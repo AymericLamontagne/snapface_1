@@ -2,6 +2,23 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.3.
 
+## Installation
+
+Install Angular Material:
+> `ng add @angular/material`
+
+Install tailwind with the commands:
+> `npm install -D tailwindcss`  
+> `npx tailwindcss init`
+
+Install tailwind scrollbar plugin:
+> `npm install --save-dev tailwind-scrollbar` or
+> `npm run tw` to run the script
+
+Run the CLI tool to scan your template files for classes and build your CSS:
+> `npx tailwindcss -i ./src/styles.scss -o ./dist/styles.scss --watch`
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.

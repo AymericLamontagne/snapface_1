@@ -97,7 +97,15 @@ export class ModeRtComponent implements AfterViewInit, OnInit {
   }
 
   toggleTheme() {
-    document.documentElement.classList.add('dark');
-    localStorage.setItem('color-theme', 'dark');
+    if (localStorage.getItem('color-theme') === 'dark') {
+      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
+      localStorage.setItem('color-theme', 'light');
+    } else {
+      document.documentElement.classList.remove('light');
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('color-theme', 'dark');
+    }
   }
+
 }

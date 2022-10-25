@@ -30,31 +30,31 @@
   <span>{{ 'MIRRT.MODE_NAME' | transloco }}</span>
 </div>
 <mat-grid-list cols="12" rowHeight="65px" [gutterSize]="'20px'" class="left-[2%] right-[2%] top-[11vh] w-[96%]">
-  <mat-grid-tile class="rounded-md border-2 border-outline-color bg-secondary-bg dark:bg-dark-secondary-bg" [colspan]="3" [rowspan]="2">
+  <mat-grid-tile class="rounded-md border-2 border-outline-color bg-secondary-bg dark:border-dark-outline-color dark:bg-dark-secondary-bg" [colspan]="3" [rowspan]="2">
     <div class="absolute left-[30px] top-[22px] font-bold text-[18px] text-text-2 dark:text-dark-text-2">
       {{ 'MIRRT.ASSET_TILE' | transloco }}
     </div>
   </mat-grid-tile>
-  <mat-grid-tile class="rounded-md border-2 border-outline-color bg-secondary-bg dark:bg-dark-secondary-bg" [colspan]="3" [rowspan]="2">
+  <mat-grid-tile class="rounded-md border-2 border-outline-color bg-secondary-bg dark:border-dark-outline-color dark:bg-dark-secondary-bg" [colspan]="3" [rowspan]="2">
     <div class="absolute left-[30px] top-[22px] font-bold text-[18px] text-text-2 dark:text-dark-text-2">
       {{ 'MIRRT.REASON_TILE' | transloco }}
     </div>
   </mat-grid-tile>
-  <mat-grid-tile class="rounded-md border-2 border-outline-color bg-secondary-bg dark:bg-dark-secondary-bg" [colspan]="3" [rowspan]="2">
+  <mat-grid-tile class="rounded-md border-2 border-outline-color bg-secondary-bg dark:border-dark-outline-color dark:bg-dark-secondary-bg" [colspan]="3" [rowspan]="2">
     <div class="absolute left-[30px] top-[22px] font-bold text-[18px] text-text-2 dark:text-dark-text-2">
       {{ 'MIRRT.COMP_TILE' | transloco }}
     </div>
   </mat-grid-tile>
   <mat-grid-tile class="info-tile-invis" [colspan]="3" [rowspan]="2">
   </mat-grid-tile>
-  <mat-grid-tile class="rounded-md border-2 border-outline-color bg-secondary-bg dark:bg-dark-secondary-bg" [colspan]="3" [rowspan]="6">
-    <div class="absolute left-[30px] top-[22px] font-bold text-[18px] text-text-2 dark:text-dark-text-2">
+  <mat-grid-tile class="rounded-md border-2 border-outline-color bg-secondary-bg dark:border-dark-outline-color dark:bg-dark-secondary-bg" [colspan]="3" [rowspan]="6">
+    <div class="absolute h-full left-[30px] top-[22px] font-bold text-[18px] text-text-2 dark:text-dark-text-2">
       {{ 'MIRRT.ASSET_INFO_TILE' | transloco }}
     </div>
   </mat-grid-tile>
-  <mat-grid-tile class="hidden rounded-md border-2 border-outline-color bg-secondary-bg dark:bg-dark-secondary-bg" [colspan]="9" [rowspan]="6">
-    <div class="w-full h-full bottom-0 rounded-md overflow-auto bg-secondary-bg">
-      <table mat-table [dataSource]="dataSource" class="overflow-auto w-full bg-secondary-bg dark:bg-dark-secondary-bg">
+  <mat-grid-tile class="hidden rounded-md border-2 border-outline-color bg-secondary-bg dark:border-dark-outline-color dark:bg-dark-secondary-bg" [colspan]="9" [rowspan]="6">
+    <div class="w-full h-[91%] mb-[40px] overflow-auto bg-secondary-bg scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-transparent scrollbar-thumb-scroll dark:scrollbar-thumb-dark-scroll">
+      <table mat-table [dataSource]="dataSource" class="overflow-auto w-full bg-secondary-bg dark:bg-dark-secondary-bg ">
         <!-- Position Column -->
         <ng-container matColumnDef="position">
           <th mat-header-cell *matHeaderCellDef class="dark:text-dark-text-2">{{ 'MIRRT.CODE' | transloco }}</th>
