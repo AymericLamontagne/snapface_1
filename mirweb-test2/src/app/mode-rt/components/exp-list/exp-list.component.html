@@ -1,0 +1,47 @@
+<div class="absolute bg-secondary-bg w-full h-full top-0 left-0">
+  <div
+    class="overflow-auto ml-auto mr-auto mt-[5rem] mb-auto bg-secondary-bg h-[500px] w-[700px] scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-transparent scrollbar-thumb-scroll dark:scrollbar-thumb-dark-scroll"
+  >
+    <mat-accordion>
+      <mat-expansion-panel [disabled]="true">
+        <mat-expansion-panel-header class="bg-secondary-bg">
+          <mat-panel-title class="font-bold" *ngFor="let title of expTitle">
+            {{ title }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+      <mat-divider class="border-t-outline-color border-10"></mat-divider>
+      <div *ngFor="let piece of pieceData">
+        <mat-expansion-panel
+          (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false"
+          [disabled]="true"
+          #mep="matExpansionPanel"
+          class="bg-secondary-bg text-text-2 focus:bg-primary"
+        >
+          <mat-expansion-panel-header class="bg-secondary-bg h-[40px] focus:bg-primary">
+            <mat-panel-title>{{ piece.code }}</mat-panel-title>
+            <mat-panel-description>{{ piece.description }}</mat-panel-description>
+            <mat-panel-description>{{ piece.inventory }}</mat-panel-description>
+            <button (click)="mep.expanded = !mep.expanded" class="pointer-events-auto">
+              <svg
+                class="w-6 h-6 fill-none stroke-text-2"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </button>
+          </mat-expansion-panel-header>
+          <p>Cette piece coute {{ piece.price }}$</p>
+        </mat-expansion-panel>
+        <mat-divider class="border-t-scroll"></mat-divider>
+      </div>
+    </mat-accordion>
+  </div>
+</div>

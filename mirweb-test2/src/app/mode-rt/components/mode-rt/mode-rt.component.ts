@@ -1,8 +1,16 @@
-import { AfterViewInit, Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { MatTableDataSource } from "@angular/material/table";
-import { MatPaginator } from "@angular/material/paginator";
-import { TraductorService } from "../../services/traductor.service";
-import { FormBuilder, FormControl } from "@angular/forms";
+import {
+  AfterViewInit,
+  Component,
+  Input,
+  OnInit,
+  ViewChild,
+  ViewEncapsulation,
+} from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { TraductorService } from '../../services/traductor.service';
+import { FormBuilder, FormControl } from '@angular/forms';
+import { HostListener } from '@angular/core';
 
 export interface Tile {
   color: string;
@@ -38,56 +46,87 @@ const ELEMENT_DATA: PeriodicElement[] = [
   { position: 17, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
 ];
 
-
 @Component({
   selector: 'app-mode-rt',
   templateUrl: './mode-rt.component.html',
   styleUrls: ['./mode-rt.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class ModeRtComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  panelOpenState = false;
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   currentDate = new Date();
   traductor!: TraductorService;
   langCtrl!: FormControl;
+  screenHeight!: any;
+  screenWidth!: any;
+
+  @Input() item: any;
+  items = [
+    {
+      title: 'title1',
+      description: 'desc1',
+      content: 'content1',
+    },
+    {
+      title: 'title2',
+      description: 'desc2',
+      content: 'content2',
+    },
+  ];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private traductorService: TraductorService, private formBuilder: FormBuilder) {
+  constructor(
+    private traductorService: TraductorService,
+    private formBuilder: FormBuilder
+  ) {
+    this.getScreenSize();
   }
 
   ngOnInit(): void {
     this.traductor = this.traductorService;
 
-    this.langCtrl = this.formBuilder.control(this.traductorService.locales[0].value)
+    this.langCtrl = this.formBuilder.control(this.traductorService.locales[0].value);
   }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
 
+  @HostListener('window:resize', ['$event'])
+  getScreenSize(): number {
+    this.screenHeight = window.innerHeight;
+    this.screenWidth = window.innerWidth;
+    console.log(
+      this.screenHeight,
+      this.screenWidth,
+      this.screenHeight / this.screenWidth
+    );
+    return this.screenHeight / this.screenWidth;
   }
 
   columns = [
     {
       columnDef: 'position',
       header: 'No.',
-      cell: (element: PeriodicElement) => `${ element.position }`,
+      cell: (element: PeriodicElement) => `${element.position}`,
     },
     {
       columnDef: 'name',
       header: 'Name',
-      cell: (element: PeriodicElement) => `${ element.name }`,
+      cell: (element: PeriodicElement) => `${element.name}`,
     },
     {
       columnDef: 'weight',
       header: 'Weight',
-      cell: (element: PeriodicElement) => `${ element.weight }`,
+      cell: (element: PeriodicElement) => `${element.weight}`,
     },
     {
       columnDef: 'symbol',
       header: 'Symbol',
-      cell: (element: PeriodicElement) => `${ element.symbol }`,
+      cell: (element: PeriodicElement) => `${element.symbol}`,
     },
   ];
 
@@ -107,5 +146,4 @@ export class ModeRtComponent implements AfterViewInit, OnInit {
       localStorage.setItem('color-theme', 'dark');
     }
   }
-
 }

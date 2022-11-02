@@ -1,89 +1,325 @@
-<body class="absolute bg-primary w-full h-full dark:bg-dark-primary">
-<mat-toolbar class="bg-secondary-bg h-12 dark:bg-dark-secondary-bg">
-  <span class="font-bold text-2xl text-tex1t dark:text-dark-text-1">MIR-RT</span>
-  <span class="flex-auto"></span>
-  <div class="space-x-2 mr-6 mt-1">
-    <select (change)="updateLocale()" class="" [formControl]="langCtrl">
-      <option
-        *ngFor="let l of traductor.locales" [value]="l.value" [selected]="l.value === traductor.locale">
-        {{ l.label }}
-      </option>
-    </select>
-  <span class="text-base font-normal dark:text-dark-text-1">
-    {{currentDate | date:'EEE MMMM dd' :'': traductor.locale}}</span>
-  <span class="text-base font-bold dark:text-dark-text-1">
-    {{currentDate | date:'H:mm'}}</span>
-  </div>
-  <div class="space-x--2">
-    <button mat-icon-button>
-      <svg class="w-6 h-6 fill-none stroke-text-1 dark:stroke-dark-text-1" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
-    </button>
-    <button mat-icon-button (click)="toggleTheme()">
-      <svg class="w-6 h-6 fill-none stroke-text-1 dark:stroke-dark-text-1" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-    </button>
-    <button mat-icon-button>
-      <svg class="w-6 h-6 fill-none stroke-text-1 dark:stroke-dark-text-1" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-    </button>
-  </div>
-</mat-toolbar>
-<div class="absolute text-text-2 font-bold left-[2%] top-[8vh] text-[25px] dark:text-dark-text-2">
-  <span>{{ 'MIRRT.MODE_NAME' | transloco }}</span>
+<div *ngIf="getScreenSize() <= 1.1">
+  <body class="absolute bg-primary w-full h-full dark:bg-dark-primary">
+    <mat-toolbar class="bg-secondary-bg h-12 dark:bg-dark-secondary-bg">
+      <span class="font-bold text-2xl text-tex1t dark:text-dark-text-1">MIR-RT</span>
+      <span class="flex-auto"></span>
+      <div class="space-x-2 mr-6 mt-1">
+        <select (change)="updateLocale()" class="" [formControl]="langCtrl">
+          <option
+            *ngFor="let l of traductor.locales"
+            [value]="l.value"
+            [selected]="l.value === traductor.locale"
+          >
+            {{ l.label }}
+          </option>
+        </select>
+        <span class="text-base font-normal dark:text-dark-text-1">
+          {{ currentDate | date: "EEE MMMM dd":"":traductor.locale }}</span
+        >
+        <span class="text-base font-bold dark:text-dark-text-1">
+          {{ currentDate | date: "H:mm" }}</span
+        >
+      </div>
+      <div class="space-x--2">
+        <button mat-icon-button>
+          <svg
+            class="w-6 h-6 fill-none stroke-text-1 dark:stroke-dark-text-1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+            ></path>
+          </svg>
+        </button>
+        <button mat-icon-button (click)="toggleTheme()">
+          <svg
+            class="w-6 h-6 fill-none stroke-text-1 dark:stroke-dark-text-1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+        </button>
+        <button mat-icon-button>
+          <svg
+            class="w-6 h-6 fill-none stroke-text-1 dark:stroke-dark-text-1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </mat-toolbar>
+    <div
+      class="absolute text-text-2 font-bold left-[2%] top-[8vh] text-[25px] dark:text-dark-text-2"
+    >
+      <span>{{ "MIRRT.MODE_NAME" | transloco }}</span> --
+      <a routerLink="exp-list">test</a>
+    </div>
+    <mat-grid-list
+      cols="12"
+      rowHeight="65px"
+      [gutterSize]="'20px'"
+      class="left-[2%] right-[2%] top-[11vh] w-[96%]"
+    >
+      <mat-grid-tile
+        class="rounded-md border-2 border-outline-color bg-blue-500 md:bg-red-500 dark:border-dark-outline-color dark:bg-dark-secondary-bg"
+        [colspan]="3"
+        [rowspan]="2"
+      >
+        <div
+          class="absolute left-[30px] top-[22px] font-bold text-[18px] text-text-2 dark:text-dark-text-2"
+        >
+          {{ "MIRRT.ASSET_TILE" | transloco }}
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile
+        class="rounded-md border-2 border-outline-color bg-secondary-bg dark:border-dark-outline-color dark:bg-dark-secondary-bg"
+        [colspan]="3"
+        [rowspan]="2"
+      >
+        <div
+          class="absolute left-[30px] top-[22px] font-bold text-[18px] text-text-2 dark:text-dark-text-2"
+        >
+          {{ "MIRRT.REASON_TILE" | transloco }}
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile
+        class="rounded-md border-2 border-outline-color bg-secondary-bg dark:border-dark-outline-color dark:bg-dark-secondary-bg"
+        [colspan]="3"
+        [rowspan]="2"
+      >
+        <div
+          class="absolute left-[30px] top-[22px] font-bold text-[18px] text-text-2 dark:text-dark-text-2"
+        >
+          {{ "MIRRT.COMP_TILE" | transloco }}
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile class="info-tile-invis" [colspan]="3" [rowspan]="2">
+        <button
+          class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-full group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
+        >
+          <span
+            class="relative px-5 py-7.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-full group-hover:bg-opacity-0"
+          >
+            START
+          </span>
+        </button>
+        <div class="container text-center mt-5">
+          <p>
+            Window width: <strong>{{ screenWidth }}</strong>
+          </p>
+          <p>
+            Window height: <strong>{{ screenHeight }}</strong>
+          </p>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile
+        class="rounded-md border-2 border-outline-color bg-secondary-bg dark:border-dark-outline-color dark:bg-dark-secondary-bg"
+        [colspan]="3"
+        [rowspan]="6"
+      >
+        <div class="bg-red-400 w-full text-[16px]"></div>
+      </mat-grid-tile>
+      <mat-grid-tile
+        class="hidden rounded-md border-2 border-outline-color bg-secondary-bg dark:border-dark-outline-color dark:bg-dark-secondary-bg"
+        [colspan]="9"
+        [rowspan]="6"
+      >
+        <div
+          class="w-full h-[91%] mb-[40px] overflow-auto bg-secondary-bg scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-transparent scrollbar-thumb-scroll dark:scrollbar-thumb-dark-scroll"
+        >
+          <table
+            mat-table
+            [dataSource]="dataSource"
+            class="overflow-auto w-full border-separate bg-secondary-bg dark:bg-dark-secondary-bg"
+          >
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="dark:text-dark-text-2 dark:border-dark-outline-color"
+              >
+                {{ "MIRRT.CODE" | transloco }}
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="dark:text-dark-text-1 dark:border-dark-outline-color"
+              >
+                {{ element.position }}
+              </td>
+            </ng-container>
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="dark:text-dark-text-2 dark:border-dark-outline-color"
+              >
+                {{ "MIRRT.NAME" | transloco }}
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="dark:text-dark-text-1 dark:border-dark-outline-color"
+              >
+                {{ element.name }}
+              </td>
+            </ng-container>
+            <!-- Weight Column -->
+            <ng-container matColumnDef="weight">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="dark:text-dark-text-2 dark:border-dark-outline-color"
+              >
+                {{ "MIRRT.WEIGHT" | transloco }}
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="dark:text-dark-text-1 dark:border-dark-outline-color"
+              >
+                {{ element.weight }}
+              </td>
+            </ng-container>
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="symbol">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="dark:text-dark-text-2 dark:border-dark-outline-color"
+              >
+                {{ "MIRRT.SYMBOL" | transloco }}
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="dark:text-dark-text-1 dark:border-dark-outline-color"
+              >
+                {{ element.symbol }}
+              </td>
+            </ng-container>
+            <tr
+              mat-header-row
+              *matHeaderRowDef="displayedColumns"
+              class="sticky top-0 bg-secondary-bg dark:bg-dark-secondary-bg"
+            ></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+        <div
+          class="absolute left-0 bottom-0 w-full bg-secondary-bg dark:bg-dark-secondary-bg dark:text-dark-text-1"
+        >
+          <mat-paginator
+            [pageSize]="100"
+            hidePageSize
+            showFirstLastButtons
+            class="overflow-auto"
+          >
+          </mat-paginator>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </body>
 </div>
-<mat-grid-list cols="12" rowHeight="65px" [gutterSize]="'20px'" class="left-[2%] right-[2%] top-[11vh] w-[96%]">
-  <mat-grid-tile class="rounded-md border-2 border-outline-color bg-secondary-bg dark:border-dark-outline-color dark:bg-dark-secondary-bg" [colspan]="3" [rowspan]="2">
-    <div class="absolute left-[30px] top-[22px] font-bold text-[18px] text-text-2 dark:text-dark-text-2">
-      {{ 'MIRRT.ASSET_TILE' | transloco }}
-    </div>
-  </mat-grid-tile>
-  <mat-grid-tile class="rounded-md border-2 border-outline-color bg-secondary-bg dark:border-dark-outline-color dark:bg-dark-secondary-bg" [colspan]="3" [rowspan]="2">
-    <div class="absolute left-[30px] top-[22px] font-bold text-[18px] text-text-2 dark:text-dark-text-2">
-      {{ 'MIRRT.REASON_TILE' | transloco }}
-    </div>
-  </mat-grid-tile>
-  <mat-grid-tile class="rounded-md border-2 border-outline-color bg-secondary-bg dark:border-dark-outline-color dark:bg-dark-secondary-bg" [colspan]="3" [rowspan]="2">
-    <div class="absolute left-[30px] top-[22px] font-bold text-[18px] text-text-2 dark:text-dark-text-2">
-      {{ 'MIRRT.COMP_TILE' | transloco }}
-    </div>
-  </mat-grid-tile>
-  <mat-grid-tile class="info-tile-invis" [colspan]="3" [rowspan]="2">
-  </mat-grid-tile>
-  <mat-grid-tile class="rounded-md border-2 border-outline-color bg-secondary-bg dark:border-dark-outline-color dark:bg-dark-secondary-bg" [colspan]="3" [rowspan]="6">
-    <div class="absolute h-full left-[30px] top-[22px] font-bold text-[18px] text-text-2 dark:text-dark-text-2">
-      {{ 'MIRRT.ASSET_INFO_TILE' | transloco }}
-    </div>
-  </mat-grid-tile>
-  <mat-grid-tile class="hidden rounded-md border-2 border-outline-color bg-secondary-bg dark:border-dark-outline-color dark:bg-dark-secondary-bg" [colspan]="9" [rowspan]="6">
-    <div class="w-full h-[91%] mb-[40px] overflow-auto bg-secondary-bg scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-transparent scrollbar-thumb-scroll dark:scrollbar-thumb-dark-scroll">
-      <table mat-table [dataSource]="dataSource" class="overflow-auto w-full bg-secondary-bg dark:bg-dark-secondary-bg ">
-        <!-- Position Column -->
-        <ng-container matColumnDef="position">
-          <th mat-header-cell *matHeaderCellDef class="dark:text-dark-text-2">{{ 'MIRRT.CODE' | transloco }}</th>
-          <td mat-cell *matCellDef="let element" class="dark:text-dark-text-1"> {{element.position}} </td>
-        </ng-container>
-        <!-- Name Column -->
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef class="dark:text-dark-text-2"> {{ 'MIRRT.NAME' | transloco }}</th>
-          <td mat-cell *matCellDef="let element" class="dark:text-dark-text-1"> {{element.name}} </td>
-        </ng-container>
-        <!-- Weight Column -->
-        <ng-container matColumnDef="weight">
-          <th mat-header-cell *matHeaderCellDef class="dark:text-dark-text-2">{{ 'MIRRT.WEIGHT' | transloco }}</th>
-          <td mat-cell *matCellDef="let element" class="dark:text-dark-text-1"> {{element.weight}} </td>
-        </ng-container>
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="symbol">
-          <th mat-header-cell *matHeaderCellDef class="dark:text-dark-text-2"> {{ 'MIRRT.SYMBOL' | transloco }}</th>
-          <td mat-cell *matCellDef="let element" class="dark:text-dark-text-1"> {{element.symbol}} </td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns" class="sticky top-0 bg-secondary-bg dark:bg-dark-secondary-bg"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-    </div>
-    <div class="absolute left-0 bottom-0 w-full bg-secondary-bg dark:bg-dark-secondary-bg dark:text-dark-text-1">
-      <mat-paginator [pageSizeOptions]="[20, 50, 100]" showFirstLastButtons>
-      </mat-paginator>
-    </div>
-  </mat-grid-tile>
-</mat-grid-list>
-</body>
 
+<div *ngIf="getScreenSize() > 1.1" class="bg-primary w-full h-full dark:bg-dark-primary">
+  <div class="h-[58px] bg-secondary-bg">
+    <span class="absolute ml-[8%] top-[1rem] text-[18px] text-text-2 font-bold"
+      >Accueil</span
+    >
+    <button mat-icon-button class="top-[8px] left-[90%]">
+      <svg
+        class="w-6 h-6 fill-none stroke-text-1 dark:stroke-dark-text-1"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+        ></path>
+      </svg>
+    </button>
+  </div>
+  <mat-grid-list
+    cols="12"
+    rowHeight="65px"
+    [gutterSize]="'20px'"
+    class="left-[14.5%] right-[6%] top-[2rem] w-[88%]"
+  >
+    <mat-grid-tile
+      class="rounded-md border-2 border-outline-color bg-secondary-bg dark:border-dark-outline-color dark:bg-dark-secondary-bg"
+      [colspan]="10"
+      [rowspan]="2"
+    >
+      <div
+        class="absolute left-[30px] top-[22px] font-bold text-[18px] text-text-2 dark:text-dark-text-2"
+      >
+        {{ "MIRRT.ASSET_TILE" | transloco }}
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile
+      class="rounded-md border-2 border-outline-color bg-secondary-bg dark:border-dark-outline-color dark:bg-dark-secondary-bg"
+      [colspan]="10"
+      [rowspan]="2"
+    >
+      <div
+        class="absolute left-[30px] top-[22px] font-bold text-[18px] text-text-2 dark:text-dark-text-2"
+      >
+        {{ "MIRRT.REASON_TILE" | transloco }}
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile
+      class="rounded-md border-2 border-outline-color bg-secondary-bg dark:border-dark-outline-color dark:bg-dark-secondary-bg"
+      [colspan]="10"
+      [rowspan]="2"
+    >
+      <div
+        class="absolute left-[30px] top-[22px] font-bold text-[18px] text-text-2 dark:text-dark-text-2"
+      >
+        {{ "MIRRT.COMP_TILE" | transloco }}
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-toolbar class="fixed w-full h-[16%] bg-primary z-1000 bottom-0">
+    <button
+      class="ml-3 w-[3rem] h-[3rem] rounded-md bg-blue-500 hover:bg-red-500 text-white"
+    >
+      B
+    </button>
+    <span class="flex-auto"></span>
+    <button class="w-[3rem] h-[3rem] rounded-md bg-blue-500 hover:bg-red-500 text-white">
+      B
+    </button>
+    <span class="flex-auto"></span>
+    <button class="w-28 h-28 rounded-full bg-blue-500 hover:bg-red-500 text-white">
+      START
+    </button>
+    <span class="flex-auto"></span>
+    <button class="w-[3rem] h-[3rem] rounded-md bg-blue-500 hover:bg-red-500 text-white">
+      B
+    </button>
+    <span class="flex-auto"></span>
+    <button
+      class="mr-3 w-[3rem] h-[3rem] rounded-md bg-blue-500 hover:bg-red-500 text-white"
+    >
+      B
+    </button>
+  </mat-toolbar>
+</div>
