@@ -1,0 +1,111 @@
+@use '../node_modules/@angular/material/index' as mat;
+
+@include mat.core();
+
+$turquoise-palette: (
+  50: #def6f6,
+  100: #aee8e8,
+  200: #79d8da,
+  300: #41c8cd,
+  400: #00bdc4,
+  500: #00b2bd,
+  600: #00a2ab,
+  700: #008d93,
+  800: #00797c,
+  900: #005753,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(black, 0.87),
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  )
+);
+
+$magenta-palette: (
+  50: #f7e2f5,
+  100: #ebb7e7,
+  200: #de86d8,
+  300: #cf4ec9,
+  400: #c400bd,
+  500: #b700b2,
+  600: #a800ae,
+  700: #9400a8,
+  800: #8200a4,
+  900: #5f0099,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(black, 0.87),
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  )
+);
+
+$ambre-palette: (
+  50: #fff2df,
+  100: #ffddb0,
+  200: #ffc77d,
+  300: #ffaf49,
+  400: #ff9e22,
+  500: #ff8d00,
+  600: #fa8100,
+  700: #f47100,
+  800: #ee6002,
+  900: #e54304,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(black, 0.87),
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  )
+);
+
+$my-primary: mat.define-palette($turquoise-palette, 400, 300, 500);
+$my-accent: mat.define-palette($magenta-palette, 300, 100, 600);
+$my-touches: mat.define-palette($ambre-palette, 500, 200, 800);
+
+$light-theme: mat.define-light-theme((
+  color: (
+    primary: $my-primary,
+    accent: $my-accent,
+  )
+));
+$dark-theme: mat.define-dark-theme((
+  color: (
+    primary: $my-primary,
+    accent: $my-accent,
+  )
+));
+
+@include mat.all-component-themes($light-theme);
+
+.dark {
+  @include mat.all-component-themes($dark-theme);
+}
+
+.mat-expansion-panel .mat-expansion-panel-header.cdk-keyboard-focused:not([aria-disabled=true]), .mat-expansion-panel .mat-expansion-panel-header.cdk-program-focused:not([aria-disabled=true]), .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:hover:not([aria-disabled=true]) {
+  background: rgba(0, 0, 0, .04)
+}
+
+@media(hover: none) {
+  .mat-expansion-panel:not(.mat-expanded):not([aria-disabled=true]) .mat-expansion-panel-header:hover {
+    background: #fff;
+  }
+}

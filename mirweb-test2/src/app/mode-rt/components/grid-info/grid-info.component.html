@@ -1,0 +1,169 @@
+<mat-grid-list
+  cols="12"
+  rowHeight="65px"
+  [gutterSize]="'20px'"
+  class="absolute mt-[110px] left-[5%] right-[5%] top-[2vh] w-[90%]"
+>
+  <mat-grid-tile *ngIf="isMobile()" class="tile-title" [colspan]="1" [rowspan]="2">
+    <div class="tile-spacer"></div>
+  </mat-grid-tile>
+
+  <mat-grid-tile class="tile-desktop" [colspan]="colCalc()" [rowspan]="2">
+    <div class="tile-title">
+      {{ "MIRRT.ASSET_TILE" | transloco }}
+      <mat-icon matSuffix class="absolute right-0">search</mat-icon>
+    </div>
+  </mat-grid-tile>
+
+  <mat-grid-tile *ngIf="isMobile()" class="tile-title" [colspan]="1" [rowspan]="2">
+    <div class="tile-spacer"></div>
+  </mat-grid-tile>
+  <mat-grid-tile *ngIf="isMobile()" class="tile-title" [colspan]="1" [rowspan]="2">
+    <div class="tile-spacer"></div>
+  </mat-grid-tile>
+
+  <mat-grid-tile class="tile-desktop" [colspan]="colCalc()" [rowspan]="2">
+    <div class="tile-title">
+      {{ "MIRRT.REASON_TILE" | transloco }}
+      <mat-icon matSuffix class="absolute right-0">search</mat-icon>
+    </div>
+  </mat-grid-tile>
+
+  <mat-grid-tile *ngIf="isMobile()" class="tile-title" [colspan]="1" [rowspan]="2">
+    <div class="tile-spacer"></div>
+  </mat-grid-tile>
+  <mat-grid-tile *ngIf="isMobile()" class="tile-title" [colspan]="1" [rowspan]="2">
+    <div class="tile-spacer"></div>
+  </mat-grid-tile>
+
+  <mat-grid-tile class="tile-desktop" [colspan]="colCalc()" [rowspan]="2">
+    <div class="tile-title">
+      {{ "MIRRT.COMP_TILE" | transloco }}
+      <mat-icon matSuffix class="absolute right-0">search</mat-icon>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile
+    *ngIf="!isMobile()"
+    class="tile-desktop-empty"
+    [colspan]="3"
+    [rowspan]="2"
+  >
+    <button
+      class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-full group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
+    >
+      <span
+        class="relative px-5 py-7.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-full group-hover:bg-opacity-0"
+      >
+        START
+      </span>
+    </button>
+    <div class="container text-center mt-5">
+      <p>
+        Window width: <strong>{{ screenWidth }}</strong>
+      </p>
+      <p>
+        Window height: <strong>{{ screenHeight }}</strong>
+      </p>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile *ngIf="!isMobile()" class="tile-desktop" [colspan]="4" [rowspan]="6">
+    <div class="bg-red-400 w-full text-[16px]"></div>
+  </mat-grid-tile>
+  <mat-grid-tile *ngIf="!isMobile()" class="tile-desktop" [colspan]="8" [rowspan]="6">
+    <div
+      class="w-full h-[91%] mb-[40px] overflow-auto bg-secondary-bg scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-transparent scrollbar-thumb-scroll dark:scrollbar-thumb-dark-scroll"
+    >
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        class="overflow-auto w-full border-separate bg-secondary-bg dark:bg-dark-secondary-bg"
+      >
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="dark:text-dark-text-2 dark:border-dark-outline-color"
+          >
+            {{ "MIRRT.CODE" | transloco }}
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="dark:text-dark-text-1 dark:border-dark-outline-color"
+          >
+            {{ element.position }}
+          </td>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="dark:text-dark-text-2 dark:border-dark-outline-color"
+          >
+            {{ "MIRRT.NAME" | transloco }}
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="dark:text-dark-text-1 dark:border-dark-outline-color"
+          >
+            {{ element.name }}
+          </td>
+        </ng-container>
+        <!-- Weight Column -->
+        <ng-container matColumnDef="weight">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="dark:text-dark-text-2 dark:border-dark-outline-color"
+          >
+            {{ "MIRRT.WEIGHT" | transloco }}
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="dark:text-dark-text-1 dark:border-dark-outline-color"
+          >
+            {{ element.weight }}
+          </td>
+        </ng-container>
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="symbol">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="dark:text-dark-text-2 dark:border-dark-outline-color"
+          >
+            {{ "MIRRT.SYMBOL" | transloco }}
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="dark:text-dark-text-1 dark:border-dark-outline-color"
+          >
+            {{ element.symbol }}
+          </td>
+        </ng-container>
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns"
+          class="sticky top-0 bg-secondary-bg dark:bg-dark-secondary-bg"
+        ></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+    <div
+      class="absolute left-0 bottom-0 w-full bg-secondary-bg dark:bg-dark-secondary-bg dark:text-dark-text-1"
+    >
+      <mat-paginator
+        [pageSize]="100"
+        hidePageSize
+        showFirstLastButtons
+        class="overflow-auto"
+      >
+      </mat-paginator>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

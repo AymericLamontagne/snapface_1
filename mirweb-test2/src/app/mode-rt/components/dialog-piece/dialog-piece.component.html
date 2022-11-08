@@ -1,8 +1,9 @@
-<div class="absolute bg-secondary-bg w-full h-full top-0 left-0">
+<h1 mat-dialog-title>Piece</h1>
+<mat-dialog-content class="mat-typography">
   <div
     class="overflow-auto ml-auto mr-auto mt-[5rem] mb-auto bg-secondary-bg h-[500px] w-[95%] scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-transparent scrollbar-thumb-scroll dark:scrollbar-thumb-dark-scroll"
   >
-    <mat-accordion class="w-[100px]">
+    <mat-accordion>
       <mat-expansion-panel [disabled]="true">
         <mat-expansion-panel-header class="bg-secondary-bg">
           <mat-panel-title class="font-bold" *ngFor="let title of expTitle">
@@ -13,16 +14,18 @@
       <mat-divider class="border-t-outline-color border-10"></mat-divider>
       <div *ngFor="let piece of pieceData">
         <mat-expansion-panel
-          (opened)="panelOpenState = true"
-          (closed)="panelOpenState = false"
           [disabled]="true"
           #mep="matExpansionPanel"
           class="bg-secondary-bg text-text-2 focus:bg-primary"
         >
-          <mat-expansion-panel-header class="bg-secondary-bg h-[40px] focus:bg-primary">
+          <mat-expansion-panel-header class="accordion-text">
             <mat-panel-title>
-              <div>{{ piece.code }}</div>
-              <div>{{ piece.code }}</div>
+              <div>
+                {{ piece.code }}
+                <div>
+                  <mat-panel-description>{{ piece.description }}</mat-panel-description>
+                </div>
+              </div>
             </mat-panel-title>
             <mat-panel-description>{{ piece.description }}</mat-panel-description>
             <mat-panel-description>{{ piece.inventory }}</mat-panel-description>
@@ -47,4 +50,8 @@
       </div>
     </mat-accordion>
   </div>
-</div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button>Cancel</button>
+  <button mat-button [mat-dialog-close]="true">Install</button>
+</mat-dialog-actions>

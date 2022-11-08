@@ -1,6 +1,7 @@
 import {
   AfterViewInit,
   Component,
+  ElementRef,
   Input,
   OnInit,
   ViewChild,
@@ -11,6 +12,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { TraductorService } from '../../services/traductor.service';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { HostListener } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogPieceComponent } from '../dialog-piece/dialog-piece.component';
 
 export interface Tile {
   color: string;
@@ -55,6 +58,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class ModeRtComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   panelOpenState = false;
+  uiSelected!: number;
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   currentDate = new Date();
   traductor!: TraductorService;
@@ -75,19 +79,20 @@ export class ModeRtComponent implements AfterViewInit, OnInit {
       content: 'content2',
     },
   ];
-
+  @ViewChild('filterIcon') filterIcon!: ElementRef;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(
     private traductorService: TraductorService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private dialog: MatDialog
   ) {
     this.getScreenSize();
   }
 
   ngOnInit(): void {
+    this.uiSelected = 1;
     this.traductor = this.traductorService;
-
     this.langCtrl = this.formBuilder.control(this.traductorService.locales[0].value);
   }
 
@@ -99,12 +104,11 @@ export class ModeRtComponent implements AfterViewInit, OnInit {
   getScreenSize(): number {
     this.screenHeight = window.innerHeight;
     this.screenWidth = window.innerWidth;
-    console.log(
-      this.screenHeight,
-      this.screenWidth,
-      this.screenHeight / this.screenWidth
-    );
     return this.screenHeight / this.screenWidth;
+  }
+
+  isMobile(): boolean {
+    return this.getScreenSize() > 1.1;
   }
 
   columns = [
@@ -145,5 +149,21 @@ export class ModeRtComponent implements AfterViewInit, OnInit {
       document.documentElement.classList.add('dark');
       localStorage.setItem('color-theme', 'dark');
     }
+  }
+
+  openPieceDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    let dialogRef = this.dialog.open(DialogPieceComponent, {
+      width: '100%',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('le result : ' + result);
+    });
+  }
+
+  goToPage(page: number): void {
+    this.uiSelected = page;
   }
 }

@@ -47,7 +47,7 @@
             ></path>
           </svg>
         </button>
-        <button mat-icon-button>
+        <button mat-icon-button (click)="openPieceDialog('1000ms', '1500ms')">
           <svg
             class="w-6 h-6 fill-none stroke-text-1 dark:stroke-dark-text-1"
             xmlns="http://www.w3.org/2000/svg"
@@ -68,258 +68,63 @@
       <span>{{ "MIRRT.MODE_NAME" | transloco }}</span> --
       <a routerLink="exp-list">test</a>
     </div>
-    <mat-grid-list
-      cols="12"
-      rowHeight="65px"
-      [gutterSize]="'20px'"
-      class="left-[2%] right-[2%] top-[11vh] w-[96%]"
-    >
-      <mat-grid-tile
-        class="rounded-md border-2 border-outline-color bg-blue-500 md:bg-red-500 dark:border-dark-outline-color dark:bg-dark-secondary-bg"
-        [colspan]="3"
-        [rowspan]="2"
-      >
-        <div
-          class="absolute left-[30px] top-[22px] font-bold text-[18px] text-text-2 dark:text-dark-text-2"
-        >
-          {{ "MIRRT.ASSET_TILE" | transloco }}
-        </div>
-      </mat-grid-tile>
-      <mat-grid-tile
-        class="rounded-md border-2 border-outline-color bg-secondary-bg dark:border-dark-outline-color dark:bg-dark-secondary-bg"
-        [colspan]="3"
-        [rowspan]="2"
-      >
-        <div
-          class="absolute left-[30px] top-[22px] font-bold text-[18px] text-text-2 dark:text-dark-text-2"
-        >
-          {{ "MIRRT.REASON_TILE" | transloco }}
-        </div>
-      </mat-grid-tile>
-      <mat-grid-tile
-        class="rounded-md border-2 border-outline-color bg-secondary-bg dark:border-dark-outline-color dark:bg-dark-secondary-bg"
-        [colspan]="3"
-        [rowspan]="2"
-      >
-        <div
-          class="absolute left-[30px] top-[22px] font-bold text-[18px] text-text-2 dark:text-dark-text-2"
-        >
-          {{ "MIRRT.COMP_TILE" | transloco }}
-        </div>
-      </mat-grid-tile>
-      <mat-grid-tile class="info-tile-invis" [colspan]="3" [rowspan]="2">
-        <button
-          class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-full group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
-        >
-          <span
-            class="relative px-5 py-7.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-full group-hover:bg-opacity-0"
-          >
-            START
-          </span>
-        </button>
-        <div class="container text-center mt-5">
-          <p>
-            Window width: <strong>{{ screenWidth }}</strong>
-          </p>
-          <p>
-            Window height: <strong>{{ screenHeight }}</strong>
-          </p>
-        </div>
-      </mat-grid-tile>
-      <mat-grid-tile
-        class="rounded-md border-2 border-outline-color bg-secondary-bg dark:border-dark-outline-color dark:bg-dark-secondary-bg"
-        [colspan]="3"
-        [rowspan]="6"
-      >
-        <div class="bg-red-400 w-full text-[16px]"></div>
-      </mat-grid-tile>
-      <mat-grid-tile
-        class="hidden rounded-md border-2 border-outline-color bg-secondary-bg dark:border-dark-outline-color dark:bg-dark-secondary-bg"
-        [colspan]="9"
-        [rowspan]="6"
-      >
-        <div
-          class="w-full h-[91%] mb-[40px] overflow-auto bg-secondary-bg scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-transparent scrollbar-thumb-scroll dark:scrollbar-thumb-dark-scroll"
-        >
-          <table
-            mat-table
-            [dataSource]="dataSource"
-            class="overflow-auto w-full border-separate bg-secondary-bg dark:bg-dark-secondary-bg"
-          >
-            <!-- Position Column -->
-            <ng-container matColumnDef="position">
-              <th
-                mat-header-cell
-                *matHeaderCellDef
-                class="dark:text-dark-text-2 dark:border-dark-outline-color"
-              >
-                {{ "MIRRT.CODE" | transloco }}
-              </th>
-              <td
-                mat-cell
-                *matCellDef="let element"
-                class="dark:text-dark-text-1 dark:border-dark-outline-color"
-              >
-                {{ element.position }}
-              </td>
-            </ng-container>
-            <!-- Name Column -->
-            <ng-container matColumnDef="name">
-              <th
-                mat-header-cell
-                *matHeaderCellDef
-                class="dark:text-dark-text-2 dark:border-dark-outline-color"
-              >
-                {{ "MIRRT.NAME" | transloco }}
-              </th>
-              <td
-                mat-cell
-                *matCellDef="let element"
-                class="dark:text-dark-text-1 dark:border-dark-outline-color"
-              >
-                {{ element.name }}
-              </td>
-            </ng-container>
-            <!-- Weight Column -->
-            <ng-container matColumnDef="weight">
-              <th
-                mat-header-cell
-                *matHeaderCellDef
-                class="dark:text-dark-text-2 dark:border-dark-outline-color"
-              >
-                {{ "MIRRT.WEIGHT" | transloco }}
-              </th>
-              <td
-                mat-cell
-                *matCellDef="let element"
-                class="dark:text-dark-text-1 dark:border-dark-outline-color"
-              >
-                {{ element.weight }}
-              </td>
-            </ng-container>
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="symbol">
-              <th
-                mat-header-cell
-                *matHeaderCellDef
-                class="dark:text-dark-text-2 dark:border-dark-outline-color"
-              >
-                {{ "MIRRT.SYMBOL" | transloco }}
-              </th>
-              <td
-                mat-cell
-                *matCellDef="let element"
-                class="dark:text-dark-text-1 dark:border-dark-outline-color"
-              >
-                {{ element.symbol }}
-              </td>
-            </ng-container>
-            <tr
-              mat-header-row
-              *matHeaderRowDef="displayedColumns"
-              class="sticky top-0 bg-secondary-bg dark:bg-dark-secondary-bg"
-            ></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-          </table>
-        </div>
-        <div
-          class="absolute left-0 bottom-0 w-full bg-secondary-bg dark:bg-dark-secondary-bg dark:text-dark-text-1"
-        >
-          <mat-paginator
-            [pageSize]="100"
-            hidePageSize
-            showFirstLastButtons
-            class="overflow-auto"
-          >
-          </mat-paginator>
-        </div>
-      </mat-grid-tile>
-    </mat-grid-list>
+    <app-grid-info
+      [dataSource]="dataSource"
+      [displayedColumns]="displayedColumns"
+    ></app-grid-info>
   </body>
 </div>
 
-<div *ngIf="getScreenSize() > 1.1" class="bg-primary w-full h-full dark:bg-dark-primary">
-  <div class="h-[58px] bg-secondary-bg">
-    <span class="absolute ml-[8%] top-[1rem] text-[18px] text-text-2 font-bold"
-      >Accueil</span
-    >
-    <button mat-icon-button class="top-[8px] left-[90%]">
-      <svg
-        class="w-6 h-6 fill-none stroke-text-1 dark:stroke-dark-text-1"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-        ></path>
-      </svg>
-    </button>
-  </div>
-  <mat-grid-list
-    cols="12"
-    rowHeight="65px"
-    [gutterSize]="'20px'"
-    class="left-[14.5%] right-[6%] top-[2rem] w-[88%]"
-  >
-    <mat-grid-tile
-      class="rounded-md border-2 border-outline-color bg-secondary-bg dark:border-dark-outline-color dark:bg-dark-secondary-bg"
-      [colspan]="10"
-      [rowspan]="2"
-    >
-      <div
-        class="absolute left-[30px] top-[22px] font-bold text-[18px] text-text-2 dark:text-dark-text-2"
-      >
-        {{ "MIRRT.ASSET_TILE" | transloco }}
+<div *ngIf="getScreenSize() > 1.1">
+  <body class="fixed bg-primary w-full h-full dark:bg-dark-primary">
+    <div class="fixed h-[10%] w-full bg-primary dark:bg-dark-primary">
+      <div class="absolute h-[40px] w-full top-[30%] bg-primary dark:bg-dark-primary">
+        <span class="absolute mt-[10px] ml-[5%] text-[18px] text-text-2 font-bold"
+          >Accueil</span
+        >
       </div>
-    </mat-grid-tile>
-    <mat-grid-tile
-      class="rounded-md border-2 border-outline-color bg-secondary-bg dark:border-dark-outline-color dark:bg-dark-secondary-bg"
-      [colspan]="10"
-      [rowspan]="2"
+    </div>
+    <div class="bg-primary">
+      <app-grid-info
+        *ngIf="uiSelected === 1"
+        [dataSource]="dataSource"
+        [displayedColumns]="displayedColumns"
+      ></app-grid-info>
+      <app-comments-card *ngIf="uiSelected === 2" class=""></app-comments-card>
+    </div>
+    <mat-toolbar
+      class="fixed w-full bottom-0 left-0 right-0 h-[18%] bottom-[0px] bg-primary"
     >
-      <div
-        class="absolute left-[30px] top-[22px] font-bold text-[18px] text-text-2 dark:text-dark-text-2"
+      <button
+        (click)="goToPage(1)"
+        class="ml-3 w-[3rem] h-[3rem] rounded-md bg-blue-500 hover:bg-red-500 text-white"
       >
-        {{ "MIRRT.REASON_TILE" | transloco }}
-      </div>
-    </mat-grid-tile>
-    <mat-grid-tile
-      class="rounded-md border-2 border-outline-color bg-secondary-bg dark:border-dark-outline-color dark:bg-dark-secondary-bg"
-      [colspan]="10"
-      [rowspan]="2"
-    >
-      <div
-        class="absolute left-[30px] top-[22px] font-bold text-[18px] text-text-2 dark:text-dark-text-2"
+        B
+      </button>
+      <span class="flex-auto"></span>
+      <button
+        (click)="goToPage(2)"
+        class="w-[3rem] h-[3rem] rounded-md bg-blue-500 hover:bg-red-500 text-white"
       >
-        {{ "MIRRT.COMP_TILE" | transloco }}
-      </div>
-    </mat-grid-tile>
-  </mat-grid-list>
-  <mat-toolbar class="fixed w-full h-[16%] bg-primary z-1000 bottom-0">
-    <button
-      class="ml-3 w-[3rem] h-[3rem] rounded-md bg-blue-500 hover:bg-red-500 text-white"
-    >
-      B
-    </button>
-    <span class="flex-auto"></span>
-    <button class="w-[3rem] h-[3rem] rounded-md bg-blue-500 hover:bg-red-500 text-white">
-      B
-    </button>
-    <span class="flex-auto"></span>
-    <button class="w-28 h-28 rounded-full bg-blue-500 hover:bg-red-500 text-white">
-      START
-    </button>
-    <span class="flex-auto"></span>
-    <button class="w-[3rem] h-[3rem] rounded-md bg-blue-500 hover:bg-red-500 text-white">
-      B
-    </button>
-    <span class="flex-auto"></span>
-    <button
-      class="mr-3 w-[3rem] h-[3rem] rounded-md bg-blue-500 hover:bg-red-500 text-white"
-    >
-      B
-    </button>
-  </mat-toolbar>
+        B
+      </button>
+      <span class="flex-auto"></span>
+      <button class="w-28 h-28 rounded-full bg-blue-500 hover:bg-red-500 text-white">
+        START
+      </button>
+      <span class="flex-auto"></span>
+      <button
+        (click)="openPieceDialog('1000ms', '1500ms')"
+        class="w-[3rem] h-[3rem] rounded-md bg-blue-500 hover:bg-red-500 text-white"
+      >
+        B
+      </button>
+      <span class="flex-auto"></span>
+      <button
+        class="mr-3 w-[3rem] h-[3rem] rounded-md bg-blue-500 hover:bg-red-500 text-white"
+      >
+        B
+      </button>
+    </mat-toolbar>
+  </body>
 </div>

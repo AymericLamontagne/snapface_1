@@ -1,0 +1,59 @@
+<div class="body-card">
+  <div class="rounded-[1rem] w-full h-[33%]">
+    <div class="label-title">Commentaires</div>
+    <div class="comment-cards">
+      <form class="comments-form">
+        <mat-form-field class="ml-[5%] -mt-[2px] w-[90%] h-[80%]">
+          <textarea
+            matInput
+            #input1
+            cdkTextareaAutosize
+            maxlength="320"
+            class="text-area"
+          ></textarea>
+        </mat-form-field>
+        <mat-hint class="relative left-[87%] top-[45px]"
+          >{{ input1.value?.length || 0 }}/320
+        </mat-hint>
+      </form>
+    </div>
+  </div>
+  <div class="rounded-[1rem] w-full h-[33%]">
+    <div class="label-title">Causes</div>
+    <div class="comment-cards">
+      <form class="comments-form">
+        <mat-form-field class="ml-[5%] -mt-[2px] w-[90%] h-[80%]">
+          <textarea
+            matInput
+            #input1
+            cdkTextareaAutosize
+            maxlength="320"
+            class="text-area"
+          ></textarea>
+        </mat-form-field>
+        <mat-hint class="relative left-[87%] top-[45px]"
+          >{{ input1.value?.length || 0 }}/320
+        </mat-hint>
+      </form>
+    </div>
+  </div>
+  <div class="rounded-[1rem] w-full h-[33%]">
+    <div class="label-title">Correctifs</div>
+    <div class="comment-cards">
+      <form class="comments-form">
+        <mat-form-field class="ml-[5%] -mt-[2px] w-[90%] h-[80%]">
+          <textarea
+            matInput
+            #input1
+            cdkTextareaAutosize
+            maxlength="320"
+            class="text-area"
+          ></textarea>
+        </mat-form-field>
+        <mat-hint class="relative left-[87%] top-[45px]"
+          >{{ input1.value?.length || 0 }}/320
+        </mat-hint>
+      </form>
+    </div>
+  </div>
+</div>

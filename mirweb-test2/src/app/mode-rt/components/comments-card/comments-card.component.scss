@@ -1,0 +1,24 @@
+.comment-cards {
+  @apply relative w-[86%] h-[60%] ml-[7%] mt-[45px] rounded-[1rem] border-[1px] border-text-2
+}
+
+.label-title {
+  @apply relative w-[100px] left-[30px] top-[2rem] text-[16px] text-text-2
+}
+
+.body-card {
+  @apply absolute
+  w-[84%] h-[70%]
+  mt-[110px] ml-[8%]
+  rounded-[1rem] border-2
+  bg-secondary-bg border-outline-color dark:bg-dark-secondary-bg
+}
+
+.text-area {
+  padding-bottom: 25%;
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+

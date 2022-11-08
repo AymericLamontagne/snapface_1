@@ -1,0 +1,8 @@
+.mat-expansion-panel-header[aria-disabled=true] {
+  @apply text-text-2
+}
+
+.accordion-text {
+  font-size: calc(10px + 0.3vw);
+  @apply bg-secondary-bg h-[40px] focus:bg-primary
+}
