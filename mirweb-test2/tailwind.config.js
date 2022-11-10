@@ -7,7 +7,7 @@ module.exports = {
       colors: {
         // Light theme colors
         primary: "#ececec",
-        "secondary-bg": "#fff",
+        secondary: "#fff",
         theme: "#fff",
         "text-1": "#151515",
         "text-2": "#2D2D2D",
@@ -16,7 +16,7 @@ module.exports = {
 
         // Dark theme colors
         "dark-primary": "#505050",
-        "dark-secondary-bg": "#1f1f1f",
+        "dark-secondary": "#1f1f1f",
         "dark-theme": "#464646",
         "dark-text-1": "#ffffff",
         "dark-text-2": "#2D2D2D",

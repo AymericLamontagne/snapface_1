@@ -1,3 +1,12 @@
 .mat-expansion-panel-header[aria-disabled=true] {
   @apply text-text-2;
 }
+
+::ng-deep .mat-expansion-panel-header[aria-disabled=true] {
+  @apply text-text-2
+}
+
+.accordion-text {
+  font-size: calc(10px + 0.3vw);
+  @apply bg-secondary h-[45px] focus:bg-primary
+}

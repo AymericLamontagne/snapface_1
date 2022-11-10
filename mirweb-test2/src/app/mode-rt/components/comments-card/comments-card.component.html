@@ -1,9 +1,9 @@
 <div class="body-card">
-  <div class="rounded-[1rem] w-full h-[33%]">
+  <div class="outer-card">
     <div class="label-title">Commentaires</div>
     <div class="comment-cards">
       <form class="comments-form">
-        <mat-form-field class="ml-[5%] -mt-[2px] w-[90%] h-[80%]">
+        <mat-form-field class="mat-formfield">
           <textarea
             matInput
             #input1
@@ -12,47 +12,41 @@
             class="text-area"
           ></textarea>
         </mat-form-field>
-        <mat-hint class="relative left-[87%] top-[45px]"
-          >{{ input1.value?.length || 0 }}/320
-        </mat-hint>
+        <mat-hint class="char-counter">{{ input1.value?.length || 0 }}/320</mat-hint>
       </form>
     </div>
   </div>
-  <div class="rounded-[1rem] w-full h-[33%]">
+  <div class="outer-card">
     <div class="label-title">Causes</div>
     <div class="comment-cards">
       <form class="comments-form">
-        <mat-form-field class="ml-[5%] -mt-[2px] w-[90%] h-[80%]">
+        <mat-form-field class="mat-formfield">
           <textarea
             matInput
-            #input1
+            #input2
             cdkTextareaAutosize
             maxlength="320"
             class="text-area"
           ></textarea>
         </mat-form-field>
-        <mat-hint class="relative left-[87%] top-[45px]"
-          >{{ input1.value?.length || 0 }}/320
-        </mat-hint>
+        <mat-hint class="char-counter">{{ input2.value?.length || 0 }}/320</mat-hint>
       </form>
     </div>
   </div>
-  <div class="rounded-[1rem] w-full h-[33%]">
+  <div class="outer-card">
     <div class="label-title">Correctifs</div>
     <div class="comment-cards">
       <form class="comments-form">
-        <mat-form-field class="ml-[5%] -mt-[2px] w-[90%] h-[80%]">
+        <mat-form-field class="mat-formfield">
           <textarea
             matInput
-            #input1
+            #input3
             cdkTextareaAutosize
             maxlength="320"
             class="text-area"
           ></textarea>
         </mat-form-field>
-        <mat-hint class="relative left-[87%] top-[45px]"
-          >{{ input1.value?.length || 0 }}/320
-        </mat-hint>
+        <mat-hint class="char-counter">{{ input3.value?.length || 0 }}/320</mat-hint>
       </form>
     </div>
   </div>

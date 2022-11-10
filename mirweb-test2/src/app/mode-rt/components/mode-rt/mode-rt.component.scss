@@ -1,5 +1,5 @@
 .tile-desktop {
-  @apply rounded-md border-2 border-outline-color bg-secondary-bg dark:border-dark-outline-color dark:bg-dark-secondary-bg
+  @apply rounded-md border-2 border-outline-color bg-secondary dark:border-dark-outline-color dark:bg-dark-secondary
 }
 
 .tile-desktop-empty {
@@ -7,5 +7,9 @@
 
 .tile-title {
   @apply absolute left-[30px] top-[22px] font-bold text-[18px] text-text-2 dark:text-dark-text-1
+}
+
+.tb-m {
+  @apply fixed w-full bottom-0 left-0 right-0 h-[18%] bottom-[0px] bg-primary dark:bg-dark-primary
 }
 

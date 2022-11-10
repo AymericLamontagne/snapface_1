@@ -1,21 +1,39 @@
-.comment-cards {
-  @apply relative w-[86%] h-[60%] ml-[7%] mt-[45px] rounded-[1rem] border-[1px] border-text-2
+.body-card {
+  @apply absolute
+  w-[84%] h-[70%]
+  mt-[80px] ml-[8%]
+  rounded-[1rem] border-2
+  bg-secondary border-outline-color dark:bg-dark-secondary
+}
+
+.outer-card {
+  @apply rounded-[1rem] w-full h-[33%] bg-secondary
 }
 
 .label-title {
   @apply relative w-[100px] left-[30px] top-[2rem] text-[16px] text-text-2
 }
 
-.body-card {
-  @apply absolute
-  w-[84%] h-[70%]
-  mt-[110px] ml-[8%]
-  rounded-[1rem] border-2
-  bg-secondary-bg border-outline-color dark:bg-dark-secondary-bg
+.comment-cards {
+  @apply relative w-[86%] h-[60%] ml-[7%] mt-[45px] rounded-[1rem] border-[1px] border-text-2
+}
+
+.comment-form {
+  @apply bg-blue-300
+}
+
+.mat-formfield {
+  padding-bottom: 85px;
+  @apply absolute w-full h-full
 }
 
 .text-area {
-  padding-bottom: 25%;
+  padding-bottom: 85px;
+  @apply ml-[4%] mr-[5%] mt-[-5px] w-[92%]
+}
+
+.char-counter {
+  @apply absolute left-[85%] top-[84%]
 }
 
 ::ng-deep .mat-form-field-underline {

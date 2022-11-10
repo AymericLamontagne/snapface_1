@@ -1,6 +1,6 @@
-<div *ngIf="getScreenSize() <= 1.1">
+<div *ngIf="getScreenSize() <= 0.9">
   <body class="absolute bg-primary w-full h-full dark:bg-dark-primary">
-    <mat-toolbar class="bg-secondary-bg h-12 dark:bg-dark-secondary-bg">
+    <mat-toolbar class="fixed top-0 bg-secondary h-12 dark:bg-dark-secondary">
       <span class="font-bold text-2xl text-tex1t dark:text-dark-text-1">MIR-RT</span>
       <span class="flex-auto"></span>
       <div class="space-x-2 mr-6 mt-1">
@@ -47,7 +47,7 @@
             ></path>
           </svg>
         </button>
-        <button mat-icon-button (click)="openPieceDialog('1000ms', '1500ms')">
+        <button mat-icon-button (click)="openPieceDialog()">
           <svg
             class="w-6 h-6 fill-none stroke-text-1 dark:stroke-dark-text-1"
             xmlns="http://www.w3.org/2000/svg"
@@ -75,26 +75,20 @@
   </body>
 </div>
 
-<div *ngIf="getScreenSize() > 1.1">
+<div *ngIf="getScreenSize() > 0.9">
   <body class="fixed bg-primary w-full h-full dark:bg-dark-primary">
-    <div class="fixed h-[10%] w-full bg-primary dark:bg-dark-primary">
-      <div class="absolute h-[40px] w-full top-[30%] bg-primary dark:bg-dark-primary">
-        <span class="absolute mt-[10px] ml-[5%] text-[18px] text-text-2 font-bold"
-          >Accueil</span
-        >
-      </div>
+    <div class="fixed h-[40px] w-full top-[10px] bg-primary dark:bg-dark-primary">
+      <span class="absolute mt-[25px] ml-[5%] text-[22px] text-text-2 font-bold"
+        >Accueil</span
+      >
     </div>
-    <div class="bg-primary">
-      <app-grid-info
-        *ngIf="uiSelected === 1"
-        [dataSource]="dataSource"
-        [displayedColumns]="displayedColumns"
-      ></app-grid-info>
-      <app-comments-card *ngIf="uiSelected === 2" class=""></app-comments-card>
-    </div>
-    <mat-toolbar
-      class="fixed w-full bottom-0 left-0 right-0 h-[18%] bottom-[0px] bg-primary"
-    >
+    <app-grid-info
+      *ngIf="uiSelected === 1"
+      [dataSource]="dataSource"
+      [displayedColumns]="displayedColumns"
+    ></app-grid-info>
+    <app-comments-card *ngIf="uiSelected === 2" class=""></app-comments-card>
+    <mat-toolbar class="tb-m">
       <button
         (click)="goToPage(1)"
         class="ml-3 w-[3rem] h-[3rem] rounded-md bg-blue-500 hover:bg-red-500 text-white"
@@ -114,7 +108,7 @@
       </button>
       <span class="flex-auto"></span>
       <button
-        (click)="openPieceDialog('1000ms', '1500ms')"
+        (click)="openPieceDialog()"
         class="w-[3rem] h-[3rem] rounded-md bg-blue-500 hover:bg-red-500 text-white"
       >
         B

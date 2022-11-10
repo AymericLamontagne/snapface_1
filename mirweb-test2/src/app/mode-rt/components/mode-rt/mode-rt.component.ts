@@ -14,6 +14,7 @@ import { FormBuilder, FormControl } from '@angular/forms';
 import { HostListener } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogPieceComponent } from '../dialog-piece/dialog-piece.component';
+import { NgDialogAnimationService } from 'ng-dialog-animation';
 
 export interface Tile {
   color: string;
@@ -85,7 +86,7 @@ export class ModeRtComponent implements AfterViewInit, OnInit {
   constructor(
     private traductorService: TraductorService,
     private formBuilder: FormBuilder,
-    private dialog: MatDialog
+    public dialog: NgDialogAnimationService
   ) {
     this.getScreenSize();
   }
@@ -108,7 +109,7 @@ export class ModeRtComponent implements AfterViewInit, OnInit {
   }
 
   isMobile(): boolean {
-    return this.getScreenSize() > 1.1;
+    return this.getScreenSize() > 0.9;
   }
 
   columns = [
@@ -151,11 +152,17 @@ export class ModeRtComponent implements AfterViewInit, OnInit {
     }
   }
 
-  openPieceDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+  openPieceDialog(): void {
     let dialogRef = this.dialog.open(DialogPieceComponent, {
+      maxWidth: '100vw',
+      maxHeight: '100vh',
+      height: '90%',
       width: '100%',
-      enterAnimationDuration,
-      exitAnimationDuration,
+      animation: { to: 'top' },
+      position: {
+        bottom: '0px',
+        left: '0px',
+      },
     });
 
     dialogRef.afterClosed().subscribe((result) => {

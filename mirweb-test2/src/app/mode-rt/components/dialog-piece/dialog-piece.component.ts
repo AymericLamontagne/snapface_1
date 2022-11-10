@@ -34,6 +34,8 @@ export class DialogPieceComponent implements OnInit {
     { code: '403-1003', description: 'Bearing de roue std', price: 210, inventory: 12 },
   ];
 
+  nbrResultat = this.pieceData.length;
+
   constructor(public dialogRef: MatDialogRef<DialogPieceComponent>) {}
 
   ngOnInit(): void {}

@@ -26,14 +26,14 @@ export class GridInfoComponent implements OnInit {
   }
 
   isMobile(): boolean {
-    return this.getScreenSize() > 1.1;
+    return this.getScreenSize() > 0.9;
   }
 
   colCalc(): number {
     if (this.isMobile()) {
-      return 10;
+      return 66;
     } else {
-      return 3;
+      return 22;
     }
   }
 

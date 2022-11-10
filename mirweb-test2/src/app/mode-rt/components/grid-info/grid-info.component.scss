@@ -1,8 +1,9 @@
 .tile-desktop {
-  @apply rounded-md border-2 border-outline-color bg-secondary-bg dark:border-dark-outline-color dark:bg-dark-secondary-bg
+  @apply rounded-md border-2 border-outline-color bg-secondary dark:border-dark-outline-color dark:bg-dark-secondary
 }
 
-.tile-desktop-empty {
+.tile-spacer {
+  @apply bg-primary
 }
 
 .tile-title {
