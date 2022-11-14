@@ -13,4 +13,12 @@ export class TextInputComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  sizeStyles(): string {
+    return `border-width: 2px;
+    border-radius: 9999px;
+    padding: 1px;
+    color: #2d2d2d;
+    width: ${this.width}px;`;
+  }
 }

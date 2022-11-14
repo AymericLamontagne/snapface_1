@@ -1,4 +1,6 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { DialogPieceComponent } from '../dialog-piece/dialog-piece.component';
+import { NgDialogAnimationService } from 'ng-dialog-animation';
 
 @Component({
   selector: 'app-grid-info',
@@ -14,7 +16,7 @@ export class GridInfoComponent implements OnInit {
   @Input() dataSource: any;
   @Input() displayedColumns!: string[];
 
-  constructor() {}
+  constructor(public dialog: NgDialogAnimationService) {}
 
   ngOnInit(): void {}
 
@@ -27,6 +29,24 @@ export class GridInfoComponent implements OnInit {
 
   isMobile(): boolean {
     return this.getScreenSize() > 0.9;
+  }
+
+  openPieceDialog(): void {
+    let dialogRef = this.dialog.open(DialogPieceComponent, {
+      maxWidth: '100vw',
+      maxHeight: '100vh',
+      height: '90%',
+      width: '100%',
+      animation: { to: 'top' },
+      position: {
+        bottom: '0px',
+        left: '0px',
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('le result : ' + result);
+    });
   }
 
   colCalc(): number {

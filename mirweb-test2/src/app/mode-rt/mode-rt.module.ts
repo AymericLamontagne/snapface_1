@@ -16,6 +16,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DialogPieceComponent } from './components/dialog-piece/dialog-piece.component';
 import { GridInfoComponent } from './components/grid-info/grid-info.component';
 import { CommentsCardComponent } from './components/comments-card/comments-card.component';
+import { UnitInfoComponent } from './components/unit-info/unit-info.component';
+import { MenuPageComponent } from './components/menu-page/menu-page.component';
+import { PiecePageComponent } from './components/piece-page/piece-page.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { CommentsCardComponent } from './components/comments-card/comments-card.
     DialogPieceComponent,
     GridInfoComponent,
     CommentsCardComponent,
+    UnitInfoComponent,
+    MenuPageComponent,
+    PiecePageComponent,
   ],
   imports: [
     CommonModule,

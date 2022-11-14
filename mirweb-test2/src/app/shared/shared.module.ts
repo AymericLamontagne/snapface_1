@@ -8,6 +8,8 @@ import { UsernamePipe } from './pipes/username.pipe';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { HighlightDirective } from './directives/highlight.directive';
 import { TextInputComponent } from './components/text-input/text-input.component';
+import { IconComponent } from './components/icon/icon.component';
+import { ButtonComponent } from './components/button/button.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { TextInputComponent } from './components/text-input/text-input.component
     TimeAgoPipe,
     HighlightDirective,
     TextInputComponent,
+    IconComponent,
+    ButtonComponent,
   ],
   imports: [CommonModule, MaterialModule, ReactiveFormsModule],
   exports: [
@@ -28,6 +32,8 @@ import { TextInputComponent } from './components/text-input/text-input.component
     TimeAgoPipe,
     HighlightDirective,
     TextInputComponent,
+    IconComponent,
+    ButtonComponent,
   ],
 })
 export class SharedModule {}

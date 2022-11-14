@@ -6,6 +6,10 @@
   @apply bg-primary
 }
 
-.tile-title {
-  @apply absolute w-[84%] left-[8%] top-[22px] font-bold text-[18px] text-text-2 dark:text-dark-text-1
+.title {
+  @apply ml-[4%] mt-[2px] font-bold text-[20px] text-text-2 dark:text-dark-text-1
+}
+
+.tile-header {
+  @apply absolute flex top-[8%] w-full
 }

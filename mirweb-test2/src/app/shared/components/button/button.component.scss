@@ -1,0 +1,66 @@
+button {
+  @apply text-tone-700 fill-tone-700 disabled:text-tone-200 disabled:fill-tone-200;
+  @apply bg-invisible disabled:hover:bg-invisible disabled:active:bg-invisible;
+  @apply w-[2.25rem] h-[2.25rem] p-1 rounded-lg;
+}
+
+.btn-primary.btn-fill, .btn-primary.btn-outline {
+  @apply border-ddcolor-600 hover:border-ddcolor-700 active:border-ddcolor-500;
+}
+
+.btn-primary.btn-fill {
+  @apply bg-ddcolor-600 hover:bg-ddcolor-700 active:bg-ddcolor-500;
+}
+
+.btn-primary.btn-outline {
+  @apply text-ddcolor-600 hover:text-ddcolor-700 active:text-ddcolor-500;
+  @apply fill-ddcolor-600 hover:fill-ddcolor-700 active:fill-ddcolor-500;
+}
+
+.btn-accent.btn-fill, .btn-accent.btn-outline {
+  @apply border-accent-500 hover:border-accent-600 active:border-accent-300;
+}
+
+.btn-accent.btn-fill {
+  @apply bg-accent-500 hover:bg-accent-600 active:bg-accent-300;
+}
+
+.btn-accent.btn-outline {
+  @apply text-accent-500 hover:text-accent-600 active:text-accent-300;
+  @apply fill-accent-500 hover:fill-accent-600 active:fill-accent-300;
+}
+
+.btn-fill, .btn-outline {
+  @apply px-6 py-1 border-2 rounded-full;
+  @apply disabled:border-tone-200 disabled:hover:border-tone-200 disabled:active:border-tone-200;
+}
+
+.btn-fill {
+  @apply text-white fill-white;
+  @apply disabled:text-white disabled:fill-white;
+  @apply disabled:bg-tone-200 disabled:hover:bg-tone-200 disabled:active:bg-tone-200;
+}
+
+.btn-outline {
+  @apply disabled:text-tone-200 disabled:hover:text-tone-200 disabled:active:text-tone-200;
+  @apply disabled:fill-tone-200 disabled:hover:fill-tone-200 disabled:active:fill-tone-200;
+}
+
+.btn-icon {
+  @apply border border-tone-200;
+  @apply hover:bg-tone-200 active:bg-invisible;
+  @apply disabled:bg-invisible disabled:hover:bg-invisible disabled:active:bg-invisible;
+}
+
+.btn-menu {
+  @apply border border-invisible;
+  @apply text-white fill-white disabled:text-tone-200 disabled:fill-tone-200;
+  @apply bg-tone-500 hover:bg-tone-300 active:bg-ddcolor-600;
+  @apply disabled:bg-invisible disabled:hover:bg-invisible disabled:active:bg-invisible;
+}
+
+.btn-label {
+  @apply border border-invisible;
+  @apply hover:bg-tone-200 active:bg-invisible;
+  @apply disabled:text-tone-200 disabled:fill-tone-200 disabled:hover:bg-invisible;
+}

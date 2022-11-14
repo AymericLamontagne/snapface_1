@@ -1,0 +1,16 @@
+<button
+  #button
+  (click)="onClick()"
+  [disabled]="disabled"
+  [ngClass]="[
+    'btn-' + color,
+    'btn-' + look,
+    size === 'medium' && isRegularButton() ? 'min-w-[6rem] min-h-[2.5rem]' : '',
+    size === 'small' && isRegularButton() ? 'min-w-[5rem] min-h-[3rem] text-xs' : ''
+  ]"
+  class="flex gap-1 justify-center items-center font-medium"
+>
+  <app-icon *ngIf="icon" [name]="icon" [size]="iconSize()"></app-icon>
+
+  <ng-content></ng-content>
+</button>

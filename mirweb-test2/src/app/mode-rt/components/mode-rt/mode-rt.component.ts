@@ -12,9 +12,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { TraductorService } from '../../services/traductor.service';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { HostListener } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { DialogPieceComponent } from '../dialog-piece/dialog-piece.component';
-import { NgDialogAnimationService } from 'ng-dialog-animation';
 
 export interface Tile {
   color: string;
@@ -85,8 +82,7 @@ export class ModeRtComponent implements AfterViewInit, OnInit {
 
   constructor(
     private traductorService: TraductorService,
-    private formBuilder: FormBuilder,
-    public dialog: NgDialogAnimationService
+    private formBuilder: FormBuilder
   ) {
     this.getScreenSize();
   }
@@ -150,24 +146,6 @@ export class ModeRtComponent implements AfterViewInit, OnInit {
       document.documentElement.classList.add('dark');
       localStorage.setItem('color-theme', 'dark');
     }
-  }
-
-  openPieceDialog(): void {
-    let dialogRef = this.dialog.open(DialogPieceComponent, {
-      maxWidth: '100vw',
-      maxHeight: '100vh',
-      height: '90%',
-      width: '100%',
-      animation: { to: 'top' },
-      position: {
-        bottom: '0px',
-        left: '0px',
-      },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('le result : ' + result);
-    });
   }
 
   goToPage(page: number): void {

@@ -1,0 +1,30 @@
+.body-card {
+  @apply absolute flex flex-col mt-[80px] w-full h-[80%]
+}
+
+.profile-card {
+  @apply mt-[30px]
+  ml-auto mr-auto
+  bg-secondary rounded-xl
+  w-[90%] h-[20%] border-2 bg-secondary border-outline-color
+}
+
+.support-card {
+  border-radius: 12px 12px 0px 0px;
+  @apply mt-[6%]
+  ml-auto mr-auto
+  bg-secondary
+  w-[90%] h-[8%] border-2 bg-secondary border-outline-color
+}
+
+.logoff-card {
+  border-radius: 0px 0px 12px 12px;
+  @apply mt-[-2px]
+  ml-auto mr-auto
+  bg-secondary
+  w-[90%] h-[8%] border-2 bg-secondary border-outline-color
+}
+
+.grid-button {
+  @apply w-10 h-10 bg-blue-400
+}

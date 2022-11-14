@@ -1,0 +1,2 @@
+<mat-icon #icon *ngIf="customIcon" [style]="sizeStyles()" [svgIcon]="name"></mat-icon>
+<mat-icon #icon *ngIf="!customIcon" [style]="sizeStyles()">{{ name }}</mat-icon>

@@ -8,32 +8,48 @@
   </mat-grid-tile>
 
   <mat-grid-tile class="tile-desktop" [colspan]="colCalc()" [rowspan]="6">
-    <div class="tile-title">
-      {{ "MIRRT.ASSET_TILE" | transloco }}
-      <mat-icon matSuffix class="absolute right-0">search</mat-icon>
+    <div class="tile-header">
+      <div class="ml-[4%]">
+        <app-icon name="unit" [size]="22"></app-icon>
+      </div>
+      <div class="title">{{ "MIRRT.ASSET_TILE" | transloco }}</div>
+      <div class="absolute right-4">
+        <app-icon name="search" [size]="22"></app-icon>
+      </div>
     </div>
   </mat-grid-tile>
   <mat-grid-tile *ngIf="isMobile()" class="tile-spacer" [colspan]="17" [rowspan]="6">
-    <div class="space-y-5">
-      <button
-        class="mr-3 w-[2rem] h-[2rem] rounded-md bg-blue-500 hover:bg-red-500 text-white"
+    <div class="w-full h-full">
+      <app-button
+        icon="planning"
+        look="icon"
+        color="accent"
+        size="medium"
+        class="absolute top-[20%]"
+      ></app-button>
+      <app-button
+        (click)="openPieceDialog()"
+        icon="info"
+        look="icon"
+        color="accent"
+        size="medium"
+        class="absolute bottom-[20%]"
       >
-        P
-      </button>
-      <button
-        class="mr-3 w-[2rem] h-[2rem] rounded-md bg-blue-500 hover:bg-red-500 text-white"
-      >
-        I
-      </button>
+      </app-button>
     </div>
   </mat-grid-tile>
   <mat-grid-tile *ngIf="isMobile()" class="tile-spacer" [colspan]="17" [rowspan]="6">
   </mat-grid-tile>
 
   <mat-grid-tile class="tile-desktop" [colspan]="colCalc()" [rowspan]="6">
-    <div class="tile-title">
-      {{ "MIRRT.REASON_TILE" | transloco }}
-      <mat-icon matSuffix class="absolute right-0">search</mat-icon>
+    <div class="tile-header">
+      <div class="ml-[4%]">
+        <app-icon name="repair" [size]="22"></app-icon>
+      </div>
+      <div class="title">{{ "MIRRT.REASON_TILE" | transloco }}</div>
+      <div class="absolute right-4">
+        <app-icon name="search" [size]="22"></app-icon>
+      </div>
     </div>
   </mat-grid-tile>
 
@@ -43,9 +59,14 @@
   </mat-grid-tile>
 
   <mat-grid-tile class="tile-desktop" [colspan]="colCalc()" [rowspan]="6">
-    <div class="tile-title">
-      {{ "MIRRT.COMP_TILE" | transloco }}
-      <mat-icon matSuffix class="absolute right-0">search</mat-icon>
+    <div class="tile-header">
+      <div class="ml-[4%]">
+        <app-icon name="reason" [size]="22"></app-icon>
+      </div>
+      <div class="title">{{ "MIRRT.COMP_TILE" | transloco }}</div>
+      <div class="absolute right-4">
+        <app-icon name="search" [size]="22"></app-icon>
+      </div>
     </div>
   </mat-grid-tile>
   <mat-grid-tile
@@ -55,10 +76,10 @@
     [rowspan]="6"
   >
     <button
-      class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-full group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
+      class="relative inline-flex items-center justify-center p-2 text-sm font-medium text-gray-900 rounded-full group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
     >
       <span
-        class="relative px-5 py-7.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-full group-hover:bg-opacity-0"
+        class="relative w-18 h-18 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-full group-hover:bg-opacity-0"
       >
         START
       </span>
@@ -73,7 +94,7 @@
     </div>
   </mat-grid-tile>
   <mat-grid-tile *ngIf="!isMobile()" class="tile-desktop" [colspan]="22" [rowspan]="17">
-    <div class="bg-red-400 w-full text-[16px]"></div>
+    <div class="w-full text-[16px]"></div>
   </mat-grid-tile>
   <mat-grid-tile *ngIf="!isMobile()" class="tile-desktop" [colspan]="75" [rowspan]="17">
     <div

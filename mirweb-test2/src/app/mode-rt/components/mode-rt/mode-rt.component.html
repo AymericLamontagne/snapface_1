@@ -47,7 +47,7 @@
             ></path>
           </svg>
         </button>
-        <button mat-icon-button (click)="openPieceDialog()">
+        <button mat-icon-button>
           <svg
             class="w-6 h-6 fill-none stroke-text-1 dark:stroke-dark-text-1"
             xmlns="http://www.w3.org/2000/svg"
@@ -82,43 +82,64 @@
         >Accueil</span
       >
     </div>
-    <app-grid-info
-      *ngIf="uiSelected === 1"
-      [dataSource]="dataSource"
-      [displayedColumns]="displayedColumns"
-    ></app-grid-info>
-    <app-comments-card *ngIf="uiSelected === 2" class=""></app-comments-card>
+    <div class="page-selector">
+      <app-grid-info
+        *ngIf="uiSelected === 1"
+        [dataSource]="dataSource"
+        [displayedColumns]="displayedColumns"
+      ></app-grid-info>
+      <app-comments-card *ngIf="uiSelected === 2"></app-comments-card>
+      <app-piece-page *ngIf="uiSelected === 3"></app-piece-page>
+      <app-menu-page *ngIf="uiSelected === 4"></app-menu-page>
+    </div>
     <mat-toolbar class="tb-m">
-      <button
+      <span class="flex-auto"></span>
+      <app-button
         (click)="goToPage(1)"
-        class="ml-3 w-[3rem] h-[3rem] rounded-md bg-blue-500 hover:bg-red-500 text-white"
+        icon="home"
+        look="menu"
+        color="accent"
+        size="medium"
       >
-        B
-      </button>
+      </app-button>
       <span class="flex-auto"></span>
-      <button
+      <app-button
         (click)="goToPage(2)"
-        class="w-[3rem] h-[3rem] rounded-md bg-blue-500 hover:bg-red-500 text-white"
+        icon="comments"
+        look="menu"
+        color="accent"
+        size="medium"
       >
-        B
-      </button>
-      <span class="flex-auto"></span>
-      <button class="w-28 h-28 rounded-full bg-blue-500 hover:bg-red-500 text-white">
-        START
-      </button>
+      </app-button>
       <span class="flex-auto"></span>
       <button
-        (click)="openPieceDialog()"
-        class="w-[3rem] h-[3rem] rounded-md bg-blue-500 hover:bg-red-500 text-white"
+        class="w-[120px] h-[120px] inline-flex items-center justify-center p-1 rounded-full bg-green-500"
       >
-        B
+        <span
+          class="w-[120px] h-[110px] py-9 transition-all ease-in duration-75 bg-green-300 text-green-500 hover:bg-green-500 active:bg-green-400 hover:text-white dark:bg-gray-900 rounded-full group-hover:bg-opacity-0"
+        >
+          START
+        </span>
       </button>
       <span class="flex-auto"></span>
-      <button
-        class="mr-3 w-[3rem] h-[3rem] rounded-md bg-blue-500 hover:bg-red-500 text-white"
+      <app-button
+        (click)="goToPage(3)"
+        icon="parts"
+        look="menu"
+        color="accent"
+        size="medium"
       >
-        B
-      </button>
+      </app-button>
+      <span class="flex-auto"></span>
+      <app-button
+        (click)="goToPage(4)"
+        icon="more"
+        look="menu"
+        color="accent"
+        size="medium"
+      >
+      </app-button>
+      <span class="flex-auto"></span>
     </mat-toolbar>
   </body>
 </div>
